@@ -1,4 +1,7 @@
 import sys, pygame
+from random import randint
+from time import time
+from math import floor
 
 pygame.init()
 
@@ -78,12 +81,21 @@ class Player(object):
 
         # Update rectangle
         self.rect.center = (self.x, self.y)
+        self.rect.center = (self.x, self.y)
 
     def draw(self, screen):
         keys = pygame.key.get_pressed()
 
         # Draw body
-        image = self.image_stands[0]
+        if keys[self.left_key] or keys[self.right_key]:
+            t = time()
+            i = floor((t - floor(t)) * 18) % 2
+            image = self.image_walks[i]
+        else:
+            t = time()
+            i = floor((t - floor(t)) * 18) % 3
+            image = self.image_stands[i]
+
         rect = image.get_rect()
         rect.x = self.x
         rect.y = self.y
@@ -133,11 +145,36 @@ class Richard(Player):
         self.sprite = "sprites/richard.png"
         self.initialize()
 
-players = []
-lam = Lam(400, 300)
-richard = Richard(200, 300)
-players.append(lam)
-players.append(richard)
+class Rhett(Player):
+    def __init__(self, x, y):
+        Player.__init__(self, x, y)
+        self.left_key = pygame.K_LEFT
+        self.right_key = pygame.K_RIGHT
+        self.jump_key = pygame.K_UP
+        self.crouch_key = pygame.K_DOWN
+        self.punch_key = pygame.K_z
+        self.kick_key = pygame.K_x
+        self.sprite = "sprites/rhett.png"
+        self.initialize()
+
+class Christian(Player):
+    def __init__(self, x, y):
+        Player.__init__(self, x, y)
+        self.left_key = pygame.K_LEFT
+        self.right_key = pygame.K_RIGHT
+        self.jump_key = pygame.K_UP
+        self.crouch_key = pygame.K_DOWN
+        self.punch_key = pygame.K_z
+        self.kick_key = pygame.K_x
+        self.sprite = "sprites/christian.png"
+        self.initialize()
+
+players = [
+        Rhett(100, 300),
+        Lam(200, 300),
+        Richard(300, 300),
+        Christian(400, 300)
+        ]
 
 while 1:
     for event in pygame.event.get():
