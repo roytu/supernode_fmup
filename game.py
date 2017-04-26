@@ -169,11 +169,50 @@ class Christian(Player):
         self.sprite = "sprites/christian.png"
         self.initialize()
 
+class Harrison(Player):
+    def __init__(self, x, y):
+        Player.__init__(self, x, y)
+        self.left_key = pygame.K_LEFT
+        self.right_key = pygame.K_RIGHT
+        self.jump_key = pygame.K_UP
+        self.crouch_key = pygame.K_DOWN
+        self.punch_key = pygame.K_z
+        self.kick_key = pygame.K_x
+        self.sprite = "sprites/harrison.png"
+        self.initialize()
+
+class Hirsh(Player):
+    def __init__(self, x, y):
+        Player.__init__(self, x, y)
+        self.left_key = pygame.K_LEFT
+        self.right_key = pygame.K_RIGHT
+        self.jump_key = pygame.K_UP
+        self.crouch_key = pygame.K_DOWN
+        self.punch_key = pygame.K_z
+        self.kick_key = pygame.K_x
+        self.sprite = "sprites/hirsh.png"
+        self.initialize()
+
+class Andy(Player):
+    def __init__(self, x, y):
+        Player.__init__(self, x, y)
+        self.left_key = pygame.K_LEFT
+        self.right_key = pygame.K_RIGHT
+        self.jump_key = pygame.K_UP
+        self.crouch_key = pygame.K_DOWN
+        self.punch_key = pygame.K_z
+        self.kick_key = pygame.K_x
+        self.sprite = "sprites/andy.png"
+        self.initialize()
+
 players = [
         Rhett(100, 300),
         Lam(200, 300),
         Richard(300, 300),
-        Christian(400, 300)
+        Christian(400, 300),
+        Andy(500, 300),
+        Harrison(600, 300),
+        Hirsh(700, 300)
         ]
 
 while 1:
